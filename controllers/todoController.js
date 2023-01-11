@@ -16,7 +16,6 @@ const createTodo = async (req, res) => {
                 priority,
                 deadline,
                 isComplete,
-                // user: req.user.id 
         })
 
         return res.status(200).json(todo)
@@ -24,7 +23,7 @@ const createTodo = async (req, res) => {
 }
 
 const getTodos = async (req, res) => {
-        console.log('userID', req.user.id)
+        // console.log('userID', req.user.id)
         const todos = await Todo.find({ user: req.user.id })
 
         return res.status(200).json(todos)
@@ -32,14 +31,14 @@ const getTodos = async (req, res) => {
 
 
 const updateTodo = async (req, res) => {
-        console.log('inside update')
+        // console.log('inside update')
         const { id } = req.params
 
-        console.log('updateID', id)
+        // console.log('updateID', id)
 
         const todo = await Todo.findById(id)
 
-        console.log('Todo' ,'line 41', todo)
+        // console.log('Todo' ,'line 41', todo)
 
         if (!todo) {
                 return res.status(400).json({ message: 'Todo not found' })
@@ -55,7 +54,7 @@ const updateTodo = async (req, res) => {
 
         const updateTodo = await Todo.findByIdAndUpdate(id, { title: req.body.title, description: req.body.description, priority: req.body.priority }, { new: true })
 
-        console.log('update', updateTodo)
+        // console.log('update', updateTodo)
         return res.status(200).json(updateTodo)
 }
 
@@ -64,9 +63,9 @@ const completeTodo = async (req, res) => {
 
         const todo = await Todo.findById(id)
 
-        console.log('status', req.body.isComplete)
+        // console.log('status', req.body.isComplete)
 
-        console.log('Todo', todo)
+        // console.log('Todo', todo)
 
         if (!todo) {
                 return res.status(400).json({ message: 'Todo not found' })
@@ -82,7 +81,7 @@ const completeTodo = async (req, res) => {
 
         const updateTodo = await Todo.findByIdAndUpdate(id, { isComplete: req.body.isComplete}, { new: true })
 
-        console.log('completeTodo', updateTodo)
+        // console.log('completeTodo', updateTodo)
         return res.status(200).json(updateTodo)
 }
 

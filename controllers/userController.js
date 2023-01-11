@@ -5,7 +5,7 @@ const User = require('../models/userModel')
 const registerUser = async (req, res) => {
         const { name, email, password } = req.body
 
-        console.log('reg',name, email, password)
+        // console.log('reg',name, email, password)
 
         if (!name || !email || !password) {
                 return res.status(400).json({
@@ -46,7 +46,7 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
         const { email, password } = req.body
-        console.log(email, password)
+        // console.log(email, password)
         const user = await User.findOne({ email })
 
         if (user && (await bcrypt.compare(password, user.password))) {
