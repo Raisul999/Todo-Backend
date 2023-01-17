@@ -81,7 +81,7 @@ const forgotPassword = async (req, res) => {
 
         const token = jwt.sign({ email: userExists.email, id: userExists._id }, secret, { expiresIn: '30m' })
 
-        const link = `https://todo-task-tracker.onrender.com/api/user/forgot-password/${userExists._id}/${token}`
+        const link = `https://todo-app-api-a6mo.onrender.com/api/user/forgot-password/${userExists._id}/${token}`
 
         // console.log(process.env.SENDER_MAIL, process.env.MAIL_PASS)
 
