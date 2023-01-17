@@ -133,7 +133,7 @@ const forgotPasswordVerify = async (req, res) => {
                 const verify = jwt.verify(token, secret)
 
                 if (verify.email) {
-                        res.redirect('http://localhost:3000/changepass')
+                        res.redirect('https://todo-task-tracker.onrender.com/changepass')
                 }
 
 
